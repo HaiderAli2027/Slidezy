@@ -34,6 +34,7 @@ def generate_slide(request):
     for idx, title in enumerate(titles):
         slides.append({
             "id": idx,
+            "image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80",
             "title": title,
-            "image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80"
+            "theme": "light" if idx % 2 == 0 else "dark"
         })
