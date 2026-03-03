@@ -9,7 +9,7 @@ def slide_builder(request):
     return render(request, 'slide_builder.html')
 
  @csrf_exempt
-def generate_slide(request):
+def generate_slides(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'Invalid request method'}, status=405)
     
@@ -21,7 +21,7 @@ def generate_slide(request):
     if not topic:
         topic = "Random topic"
 
-    title = [
+    titles = [
         f"Introduction to {topic}",
         f"Core Concepts of {topic}",
         f"How {topic} Works",
@@ -34,7 +34,9 @@ def generate_slide(request):
     for idx, title in enumerate(titles):
         slides.append({
             "id": idx,
-            "image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80",
             "title": title,
-            "theme": "light" if idx % 2 == 0 else "dark"
+            "image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80"
+
+
         })
+    return JsonResponse({'slides': slides})
