@@ -3,12 +3,15 @@ import json
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+# from google import genai
+# from google.genai import types
+
 # Create your views here.
 def slide_builder(request):
     
     return render(request, 'slide_builder.html')
 
- @csrf_exempt
+@csrf_exempt
 def generate_slides(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'Invalid request method'}, status=405)
